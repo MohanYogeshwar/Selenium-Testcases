@@ -107,7 +107,6 @@ public class Fpsd extends Fpbasecls {
 			   driver.get("https://cleargrc-qa.azurewebsites.net/");
 			   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 			  
-		
 			   
 			   
 		}	
