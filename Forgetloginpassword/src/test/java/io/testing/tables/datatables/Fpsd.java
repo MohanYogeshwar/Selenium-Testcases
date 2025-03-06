@@ -105,8 +105,7 @@ public class Fpsd extends Fpbasecls {
 		   driver=new ChromeDriver();
 		   driver.manage().window().maximize();
 			   driver.get("https://cleargrc-qa.azurewebsites.net/");
-			   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-			  
+			   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);		  
 			   
 			   
 		}	
