@@ -22,6 +22,8 @@ private void path() {
 	
     String featurePath = FileSystems.getDefault().getPath("FP.feature").normalize().toAbsolutePath().toString();
     System.out.println(featurePath);
-	}
+	
+
+}
 
 }
