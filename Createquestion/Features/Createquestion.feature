@@ -4,7 +4,7 @@ Feature: Creating a new user in Clear GRC
     Given user can access the Clear GRC login page
     When user enters the valid emial Id
     And user enters the valid password in respective field from the input sheet
-      | Excel      | Location                                  | Sheet | Index |
+      | Excel               | Location                                           | Sheet          | Index |
       | Createquestion.xlsx | C:\\Automation_Testing\\Input\\Createquestion.xlsx | Createquestion |     1 |
     Then user clicks submit button then it takes to homepage
     #Scenario: User should open the new user creation page
