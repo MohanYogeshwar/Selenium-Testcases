@@ -22,5 +22,4 @@ private void path() {
     String featurePath = FileSystems.getDefault().getPath("Createquestion.feature").normalize().toAbsolutePath().toString();
     System.out.println(featurePath);
 	}
-
 }
