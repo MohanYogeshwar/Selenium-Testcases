@@ -3,7 +3,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class Cqpom {
+public class CqpomTests {
 	@FindBy(name = "username")
 	public static WebElement user;
 	@FindBy(name = "password")

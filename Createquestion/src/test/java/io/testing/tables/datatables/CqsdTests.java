@@ -72,19 +72,19 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.testing.tables.datatables.Cqpom;
-import io.testing.tables.datatables.Cqsd;
+import io.testing.tables.datatables.CqpomTests;
+import io.testing.tables.datatables.CqsdTests;
 //import io.cucumber.messages.types.Timestamp;
 import model.Patient;
 import model.PatientList;
 
 import java.sql.Timestamp;
 
-public class Cqsd extends Cqbasecls {
+public class CqsdTests extends CqbaseclsTests {
 //	String featurePath = FileSystems.getDefault().getPath("Ncc.feature").normalize().toAbsolutePath().toString();
     
 	
-	private static final Logger logger = LoggerFactory.getLogger(Cqsd.class);
+	private static final Logger logger = LoggerFactory.getLogger(CqsdTests.class);
 	public static WebDriver driver;
 	FileInputStream ft;
 	Properties Test;
@@ -117,7 +117,7 @@ public class Cqsd extends Cqbasecls {
 	@BeforeSuite
 	@Given("user can access the Clear GRC login page")
 	public void user_can_access_the_clear_grc_login_page() {
-		PageFactory.initElements(driver, Cqpom.class);
+		PageFactory.initElements(driver, CqpomTests.class);
 		System.out.println("Enter the Target location successfully");
 	    
 	}
@@ -143,7 +143,7 @@ public class Cqsd extends Cqbasecls {
 			
 
 			Timestamp timestamp;
-			String excelFilePath = "C:\\Automation_Testing\\Reports\\";
+			String excelFilePath = "C:\\Users\\MohanrajSubramani\\Selenium-ClearGRC-Tests\\Createquestion\\Reports\\";
 
 				
 		    XSSFCellStyle styll=workbook.createCellStyle();			 
@@ -215,7 +215,7 @@ public class Cqsd extends Cqbasecls {
 				row_cell=row_cell+1;
 				
 				//Enter Password
-				WebElement password=driver.findElement(By.id("Password"));
+				WebElement password=driver.findElement(By.id("passwordInput"));
 //				password.sendKeys(row.getPassword());
 			    password.sendKeys("Pwd4ClearGRC!1");
 			    sheet.createRow(row_cell);
@@ -227,16 +227,25 @@ public class Cqsd extends Cqbasecls {
 	            sheet.getRow(row_cell).createCell(3).setCellValue(sdf1.format(timestamp));
 				row_cell=row_cell+1;
 				
+				
+				
 				//Click Submit
 				driver.findElement(By.xpath("//button[contains(text(),'Login')]")).click();				
                 System.out.println("Application Opened Successfully");
-                Thread.sleep(4000);
+                Thread.sleep(2000);
+                
+                //Select company
+				driver.findElement(By.xpath("(//input[@name='CompanyId'])[1]")).click();
+				//Click conrirm and login
+				driver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();
+				Thread.sleep(7000);
 				
                 //Click Governance
                 driver.findElement(By.xpath("//a[contains(text(),'Governance')]")).click();
 				
-                //Click COmpany setup 
+                //Click Company setup 
                 driver.findElement(By.xpath("//a[contains(text(),'Company Setup')]")).click();
+                Thread.sleep(1000);
                 
                 //click question catalog
                 driver.findElement(By.xpath("//a[contains(text(),'Question Catalog')]")).click();
@@ -261,18 +270,18 @@ public class Cqsd extends Cqbasecls {
 				
 				
 				//name
-				driver.findElement(By.id("txt-name")).sendKeys("Question 2101202501");
+				driver.findElement(By.id("txt-name")).sendKeys("Question 1807202501");
 				sheet.createRow(row_cell);
 			    sheet.getRow(row_cell).createCell(0).setCellValue("TC004");
 			    sheet.getRow(row_cell).createCell(1).setCellValue("Name");
-			    sheet.getRow(row_cell).createCell(2).setCellValue("Question 2101202501");
+			    sheet.getRow(row_cell).createCell(2).setCellValue("Question 1807202501");
 				sheet.getRow(row_cell).createCell(4).setCellValue("Pass");
 				timestamp = new Timestamp(System.currentTimeMillis());
 	            sheet.getRow(row_cell).createCell(3).setCellValue(sdf1.format(timestamp));
 				row_cell=row_cell+1;
                 
 				//Version
-				driver.findElement(By.id("txt-version")).sendKeys("V1.0.1");
+//				driver.findElement(By.id("txt-version")).sendKeys("V1.0.1");
 				sheet.createRow(row_cell);
 			    sheet.getRow(row_cell).createCell(0).setCellValue("TC005");
 			    sheet.getRow(row_cell).createCell(1).setCellValue("Version");
@@ -300,7 +309,7 @@ public class Cqsd extends Cqbasecls {
 				Thread.sleep(3000);
 				
 				WebElement up= driver.findElement(By.xpath("//input[@id='fileUpload']"));
-				String path = "C:\\Users\\MohanrajSubramani\\Downloads\\QuestionnaireTemplate (1).xlsx";
+				String path = "C:\\Users\\MohanrajSubramani\\Downloads\\QuestionnaireTemplate (18).xlsx";
 				
 				up.sendKeys(path);
 				
@@ -332,12 +341,12 @@ public class Cqsd extends Cqbasecls {
                 File imgdesn= new File(imgname);           
                 org.openqa.selenium.io.FileHandler.copy(imgsrc,imgdesn);
                 
-                if(driver.findElement(By.xpath("(//button[@class='ajs-button btn ci-btn-primary'])[2]")).isDisplayed()){
-                	driver.findElement(By.xpath("(//button[@class='ajs-button btn ci-btn-primary'])[2]")).click();
+//                if(driver.findElement(By.xpath("(//button[@class='ajs-button btn ci-btn-primary'])[2]")).isDisplayed()){
+//                	driver.findElement(By.xpath("(//button[@class='ajs-button btn ci-btn-primary'])[2]")).click();
                 
                 Thread.sleep(2000);
                 String msg= driver.findElement(By.id("toast-container")).getText();
-                }
+//                }
                 
               //screenshot               
                 File imgsrc1=((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

@@ -16,7 +16,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class Cqbasecls {
+public class CqbaseclsTests {
 
 	public static WebDriver driver;
 
